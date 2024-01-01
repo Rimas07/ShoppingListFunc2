@@ -1,0 +1,11 @@
+/* ShopCatalog.css */
+
+.list-group-item {
+  cursor: pointer;
+  padding: 1.5em;
+}
+
+.list-group-item.active {
+  background-color: #5bc0de;
+  color: #fff;
+}

@@ -1,0 +1,317 @@
+#shop {
+  margin-top: 75px;
+}
+
+.debug {
+  width: 600px;
+  margin: 0 auto;
+  margin-top: 30px;
+}
+
+.shop-filter {
+  margin-bottom: 25px;
+}
+.tile-container {
+  display: grid;
+background-color: var(--body_background);
+color: var(--body_color);
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+}
+
+.tile {
+
+
+  border-radius: 8px;
+ 
+}
+
+.tile-content {
+  display: flex;
+  align-items: center;
+}
+.shop-filter > li > a {
+  padding: 8px 12px;
+  font-size: 12px;
+}
+.modaldelete {
+   background-color: var(--body_background);
+  color: var(--body_color);
+  margin-top: 20px;
+  padding: 0.1rem;
+  border-radius: 8px;
+  text-align: center;
+}
+#shopAdd {
+  margin-left: 40px;
+}
+
+
+.shopField {
+  padding-left: 5px;
+  font-size: 20px;
+  width: 80%;
+  float: left;
+}
+
+#newShopField {
+  margin: 20px;
+  width: 75%;
+}
+
+.newShopCatalogField {
+  margin-bottom: 5px;
+  margin-left: 15px;
+  padding-left: 5px;
+  font-size: 20px;
+  width: 70%;
+  float: left;
+}
+
+#shopSubmit {
+  margin-top: -5px;
+}
+
+.shopTask {
+  margin-bottom: 20px;
+}
+
+.shopName {
+  font-size: px;
+  border-bottom: 1px lightgray solid;
+  padding-bottom: 5px;
+}
+
+.edit-in-place span {
+  cursor: pointer;
+}
+
+.edit-in-place input {
+  display: none;
+}
+
+.edit-in-place.active span {
+  display: none;
+}
+
+.edit-in-place.active input {
+  display: inline-block;
+}
+
+h3 {
+  color: #333;
+  text-align: center;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+li {
+ 
+
+  padding: 10px;
+  margin-bottom: 5px;
+  display: flex;
+  align-items: center;
+}
+
+li button {
+  margin-left: auto;
+}
+
+input[type="checkbox"] {
+  margin-right: 10px;
+}
+
+/* ShopForm styles */
+.form-group {
+  margin-top: 100px;
+}
+
+.todoField {
+  width: 100%;
+}
+
+.btn-default {
+  background-color: #5bc0de;
+  color: #fff;
+  margin-bottom: 50px;
+}
+.search {
+  margin-bottom: 20px;
+}
+
+#todo-filter {
+  margin-bottom: 10px;
+}
+
+.nav-pills li {
+  margin-right: 10px;
+}
+
+.newTodoCatalogField {
+  width: 80%;
+}
+
+.list-group-item {
+  cursor: pointer;
+  padding: 1.5em;
+}
+
+.list-group-item.active {
+  background-color: #5bc0de;
+  color: #fff;
+}
+:root {
+  --body_background: white;
+  --body_color: black;
+  --link-color: navy;
+}
+
+
+[data-theme="dark"] {
+  --body_background: #282c34;
+  --body_color: white;
+  --link-color: cyan;
+}
+body {
+  background-color: var(--body_background);
+  color: var(--body_color);
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 2px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  width: 100%;
+
+}
+
+.container {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  width: 800px;
+  color: var(--primary-text-color);
+  margin-bottom: 50px;
+}
+
+.title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.input-container {
+  display: flex;
+  margin-bottom: 20px;
+}
+
+.item-input {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px 0 0 4px;
+}
+
+.add-button {
+  background-color: #007bff;
+  border: none;
+  color: #fff;
+  border-radius: 0 4px 4px 0;
+  padding: 10px 15px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.add-button:hover {
+  background-color: #0056b3;
+}
+
+.item-list {
+  list-style: none;
+  padding: 0;
+}
+
+.item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+  font-size: 16px;
+}
+
+.delete-button {
+  background-color: #dc3545;
+  border: none;
+  color: #fff;
+  padding: 5px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.delete-button:hover {
+  background-color: #c82333;
+}
+@media (min-width: 1281px) {
+}
+
+/* 
+  ##Device = Laptops, Desktops
+  ##Screen = B/w 1025px to 1280px
+*/
+
+@media (min-width: 1025px) and (max-width: 1280px) {
+  .content {
+    width: 80%;
+  }
+}
+
+/* 
+  ##Device = Tablets, Ipads (portrait)
+  ##Screen = B/w 768px to 1024px
+*/
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  .content {
+    width: 80%;
+  }
+}
+
+/* 
+  ##Device = Tablets, Ipads (landscape)
+  ##Screen = B/w 768px to 1024px
+*/
+
+@media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+  .content {
+    width: 80%;
+  }
+}
+
+/* 
+  ##Device = Low Resolution Tablets, Mobiles (Landscape)
+  ##Screen = B/w 481px to 767px
+*/
+
+@media (min-width: 481px) and (max-width: 767px) {
+  .content {
+    width: 80%;
+  }
+}
+
+/* 
+  ##Device = Most of the Smartphones Mobiles (Portrait)
+  ##Screen = B/w 320px to 479px
+*/
+
+@media (min-width: 320px) and (max-width: 480px) {
+  .content {
+    width: 80%;
+  }
+}
