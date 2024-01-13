@@ -1,0 +1,113 @@
+{
+  "Shop": [
+    {
+      "id": "1",
+      "name": "Tesco",
+      "items": [
+        {
+          "item": "Potato",
+          "isDone": false,
+          "quantity": 12
+          
+        },
+        {
+          "item": "Tomato",
+          "isDone": false,
+          "quantity": 20
+        },
+        {
+          "item": "Cucumber",
+          "isDone": false,
+          "quantity": 12
+        },
+        {
+          "item": "Banana",
+          "isDone": true,
+          "quantity": 98
+        },
+        {
+          "item": "Chili",
+          "isDone": true,
+          "quantity": 70
+        }
+      ]
+    },
+    {
+      "id": "2",
+      "name": "Alza",
+      "items": [
+        {
+          "item": "notebook",
+          "isDone": false,
+          "quantity": 12
+        },
+        {
+          "item": "Telephone",
+          "isDone": false,
+          "quantity": 34
+        },
+        {
+          "item": "USB",
+          "isDone": true,
+          "quantity": 12
+        }
+      ]
+    },
+    {
+      "id": "3",
+      "name": "Lidl",
+      "items": [
+        {
+          "item": "Shampoo",
+          "isDone": true,
+          "quantity": 25
+        },
+        {
+          "item": "Milka",
+          "isDone": false,
+          "quantity": 12
+        },
+        {
+          "item": "Brownie",
+          "isDone": false,
+          "quantity": 25
+        },
+        {
+          "item": "Water",
+          "isDone": true,
+          "quantity": 35
+        }
+      ]
+    },
+   
+    
+   
+    {
+      "id": "8",
+      "name": "Ikea",
+      "items": [
+        {
+          "item": "Table",
+          "isDone": true,
+          "quantity": 28
+
+        },
+        {
+          "item": "Chair",
+          "isDone": false,
+          "quantity": 23
+        },
+        {
+          "item": "Lamp",
+          "isDone": false,
+          "quantity": 22
+        },
+        {
+          "item": "bed",
+          "isDone": true,
+          "quantity": 9
+        }
+      ]
+    }
+  ]
+}

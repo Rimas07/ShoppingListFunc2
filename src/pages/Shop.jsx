@@ -9,65 +9,64 @@ import ModalDelete from "../components/ModalDelete";
 import useResponsive from "../hooks/useResponsive";
 import i18n from "../i18n";
 import LanguageSwitcher from "../components/LanguageSwitcher";
-// import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
+
+import {
+  fetchLists,
+  fetchListItems,
+  createList,
+  deleteShoppingList,
+} from "../components/ShopApi";
+import { Route, BrowserRouter as Router } from "react-router-dom";
 
 const ShopApp = () => {
   const [shopState, setShopState] = useState({
-    Shop: [
-      {
-        name: "Tesco",
-        items: [
-          { item: "Potato", isDone: false },
-          { item: "Tomato", isDone: false },
-          { item: "Cucumber", isDone: false },
-          { item: "Onion", isDone: true },
-        ],
-      },
-      {
-        name: "Alza",
-        items: [
-          { item: "notebook", isDone: false },
-          { item: "Telephone", isDone: false },
-          { item: "USb", isDone: false },
-        ],
-      },
-      {
-        name: "Lidl",
-        items: [
-          { item: "Shampoo", isDone: true },
-          { item: "Milka", isDone: false },
-          { item: "Brownie", isDone: false },
-          { item: "Water", isDone: true },
-        ],
-      },
-
-      {
-        name: "Kaufland",
-        items: [
-          { item: "Chiken", isDone: false },
-          { item: "Meat", isDone: true },
-          { item: "Fish", isDone: true },
-        ],
-      },
-    ],
+    
+    Shop: [{ items: [] }],
     filter: [{ keyword: "", Status: "SHOW_ALL" }],
     selectedCatelog: "0",
     isModalOpen: false,
     isDeleteModalOpen: false,
     shopToDelete: null,
   });
-  const { t } = useTranslation();
+ const { t } = useTranslation();
   const [deleteId, setDeleteId] = useState();
   const [show, setShow] = useState(false);
   const [isDarkMode, setIsDarkMode] = useState(false);
   const [selectedStore, setSelectedStore] = useState(null);
   const { windowWidth, screenType } = useResponsive();
-
   const [dialog, setDialog] = useState({
     message: "",
     isLoading: false,
   });
 
+  useEffect(() => {
+    const fetchShoppingLists = async () => {
+      try {
+        const lists = await fetchLists();
+        setShopState({ ...shopState, Shop: lists });
+      } catch (error) {
+        console.error("Error fetching shopping lists:", error);
+      }
+    };
+
+    fetchShoppingLists();
+  }, []);
+
+  useEffect(() => {
+    const fetchItemsForSelectedShop = async () => {
+      if (shopState.selectedCatelog !== null) {
+        try {
+          const shopId = shopState.Shop[shopState.selectedCatelog].id;
+          const items = await fetchListItems(shopId);
+          console.log("Fetched items:", items);
+        } catch (error) {
+          console.error("Error fetching items:", error);
+        }
+      }
+    };
+
+    fetchItemsForSelectedShop();
+  }, [shopState.selectedCatelog]);
   const chartSizes = () => {
     if (screenType === "DESKTOP") {
       return {
@@ -113,16 +112,16 @@ const ShopApp = () => {
       Shop: newtodo,
     });
   };
-  const addCatalog = (newCatalog) => {
-    let Catalog = {
-      name: newCatalog,
-      items: [{ item: "Product", isDone: false }],
-    };
-    let newtodo = shopState.Shop.concat([Catalog]);
-    setShopState({
-      ...shopState,
-      Shop: newtodo,
-    });
+  const addCatalog = async (newCatalog) => {
+    try {
+      const newList = await createList({ name: newCatalog, items: [] });
+      setShopState({
+        ...shopState,
+        Shop: [...shopState.Shop, newList],
+      });
+    } catch (error) {
+      console.error("Error creating shopping list:", error);
+    }
   };
 
   const setSelectedCatalog = (index) => {
@@ -131,12 +130,11 @@ const ShopApp = () => {
       ...shopState,
       selectedCatelog: index,
     });
+
+   
+    const shopId = shopState.Shop[index].id;
+    fetchListItems(shopId);
   };
-
-
-
-
-
   useEffect(() => {
     document.body.setAttribute("data-theme", isDarkMode ? "dark" : "light");
   }, [isDarkMode]);
@@ -148,10 +146,6 @@ const ShopApp = () => {
       return { ...prevState, Shop: updatedShop };
     });
   };
-
-  // const handleClose = () => {
-  //   setShow(false);
-  // };
   const handleClickDeleteShop = (index) => {
     setDeleteId(index);
     setShow(true);
@@ -161,17 +155,27 @@ const ShopApp = () => {
       isLoading: true,
     });
   };
+  const handleDeleteShop = async () => {
+    try {
+      const listIdToDelete = shopState.Shop[deleteId].id;
+      await deleteShoppingList(listIdToDelete);
 
-  const handleDeleteShop = () => {
-    setShopState((prevState) => {
-      const newShop = [...prevState.Shop];
-      const filteredShop = newShop.filter((item, index) => index !== deleteId);
-      return { ...prevState, Shop: filteredShop };
-    });
-    setShow(false);
+      setShopState((prevState) => {
+        const newShop = [...prevState.Shop];
+        const filteredShop = newShop.filter(
+          (item, index) => index !== deleteId
+        );
+        return { ...prevState, Shop: filteredShop };
+      });
+    } catch (error) {
+      console.error("Error deleting shopping list:", error);
+    } finally {
+      setShow(false);
+    }
   };
 
   return (
+   
     <I18nextProvider i18n={i18n}>
       
       <div className="row">
@@ -236,11 +240,15 @@ const ShopApp = () => {
                 filter={shopState.filter}
                 onDelete={deleteItem}
               />
+                {/* <QuantityChartSection selectedStore={shopState.Shop[shopState.selectedCatelog]} /> */}
+                
             </>
-          )}
+            )}
+           
         </div>
       </div>
-    </I18nextProvider>
+      </I18nextProvider>
+     
   );
 };
 

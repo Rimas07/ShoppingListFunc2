@@ -1,7 +1,7 @@
-// LanguageSwitcher.jsx
+
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import { GrLanguage } from "react-icons/gr";
+
 
 const LanguageSwitcher = () => {
   const { i18n } = useTranslation();

@@ -25,8 +25,8 @@ const DarkMode = () => {
   const darkModeStyle = {
   fontSize: screenType === "DESKTOP" ? "24px" : "16px",
   position: "fixed",
-  top: "1em",  // Adjust top position as needed
-  right: "4em",  // Adjust right position as needed
+  top: "1em", 
+  right: "4em",  
 };
 
   const darkModeLabelStyle = {

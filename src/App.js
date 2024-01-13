@@ -1,9 +1,9 @@
 import React from "react";
-import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import Shop from "./pages/Shop";
 import DarkMode from "./components/DarkMode";
 import useResponsive from "./hooks/useResponsive";
-// import LanguageSwitcher from "./pages/LanguageSwitcher";
+import { BrowserRouter as Router,  } from "react-router-dom";
+
 
 const App = () => {
   const { windowWidth, screenType } = useResponsive();
@@ -32,40 +32,30 @@ const App = () => {
     }
   };
 
-
-
-  // useEffect(() => {
-  //   async function getShops() {
-  //     const res = await fetch("/api/shops");
-  //     const Shops = await res.json();
-  //    setMessage(Shops.mssg)
-  //   }
-  //   getShops();
-  // }, []);
   const contentStyle = {
-    width: "80%", // default value
+    width: "80%", 
   };
 
-  // Adjust content style based on screen type
-  if (screenType === "DESKTOP") {
-    contentStyle.width = "80%";
-  } else if (screenType === "TABLET" || screenType === "MOBILE") {
+  if (
+    screenType === "DESKTOP" ||
+    screenType === "TABLET" ||
+    screenType === "MOBILE"
+  ) {
     contentStyle.width = "80%";
   }
-  return (
-    
+
+return (
     <Router>
- 
-         {/* <LanguageSwitcher /> */}
- <DarkMode/>
-      <Routes>
-        <Route
-          path="/"
-                element={<Shop style={contentStyle} width={chartSizes().width} height={chartSizes().height} />}
+      <>
+        
+        <DarkMode />
+        <Shop
+          style={contentStyle}
+          width={chartSizes().width}
+          height={chartSizes().height}
         />
-      </Routes>
+      </>
     </Router>
   );
 };
-
 export default App;

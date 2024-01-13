@@ -1,12 +1,9 @@
-// ShopList.js
+
 import React, { useState } from "react";
-import ShopListItem from "./ShopLIstItem"; 
+import ShopListItem from "./ShopLIstItem";
 import { Placeholder } from "react-bootstrap";
 
-
-
-   export const ShopList = (props) => {
-
+export const ShopList = (props) => {
   const [, setData] = useState(props.items);
   let dragged = null;
   let over = null;
@@ -47,7 +44,6 @@ import { Placeholder } from "react-bootstrap";
     setData(updatedData);
   };
 
-
   const createItem = (itemText, i) => (
     <ShopListItem
       key={i}
@@ -59,7 +55,7 @@ import { Placeholder } from "react-bootstrap";
       {itemText}
     </ShopListItem>
   );
-let allItems = props.items;
+  let allItems = props.items;
   let status = props.filter[0].Status;
 
   // eslint-disable-next-line default-case
@@ -85,11 +81,8 @@ let allItems = props.items;
         {queryResult.map((item, index) => (
           <div key={index} className="tile">
             {createItem(item, index)}
-            
           </div>
-          
         ))}
-        
       </div>
     );
   }
@@ -104,7 +97,5 @@ let allItems = props.items;
     </div>
   );
 };
-  
-
 
 export default ShopList;

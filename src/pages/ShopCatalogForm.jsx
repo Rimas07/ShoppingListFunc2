@@ -1,9 +1,9 @@
-// ShopCatalogForm.js
-import React, { useState } from "react";
-import ModalCreate from "../components/ModalCreate"
-import { useTranslation } from 'react-i18next';
 
- export const ShopCatalogForm = (props) => {
+import React, { useState } from "react";
+import ModalCreate from "../components/ModalCreate";
+import { useTranslation } from "react-i18next";
+
+export const ShopCatalogForm = (props) => {
   const [item, setItem] = useState("");
   const [isModalOpen, setIsModalOpen] = useState(false);
   const { t } = useTranslation();
@@ -28,7 +28,7 @@ import { useTranslation } from 'react-i18next';
   return (
     <div className="row">
       <button className="btn btn-default" onClick={openModal}>
-        {t('Add Shopping list')}
+        {t("Add Shopping list")}
       </button>
       {isModalOpen && (
         <ModalCreate
